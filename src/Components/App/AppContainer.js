@@ -1,18 +1,25 @@
-import React, { Component } from "react";
-import AppPresenter from "./AppPresenter";
-import Store from "store";
+import React, { Component } from 'react';
+import AppPresenter from './AppPresenter';
+import Store from 'store';
 
 class AppContainer extends Component {
-  state = {
-    message: "Hello",
-    stuff: 10
-  }
-  componentDidMount = () => {
-    setTimeout(() => {
-      this.setState({
-        message: 'value'
-      });
-    }, 2000);
+  constructor(props) {
+    super(props)
+    this._changeMessage = () => {
+      if (this.state.message === 'Hello') {
+        this.setState({
+          message: "Bye bye"
+        })
+      } else {
+        this.setState({
+          message: "Hello"
+        })
+      }
+    }
+    this.state = {
+      message: "Hello",
+      _changeMessage: this._changeMessage
+    }
   }
   render() {
     return (
